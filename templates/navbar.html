@@ -1,0 +1,52 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 80px;">
+    <div class="container">
+        <a class="navbar-brand me-2" href="{% url 'homePage' %}">
+            <img
+                src="{% static 'img/logo.svg' %}"
+                height="52"
+                alt=""
+                loading="lazy"
+                style="margin-top: -1px;"
+            />
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'homePage' %}">Home</a>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center">
+                {% if user.is_authenticated %}
+                    <a class="btn btn-danger" href="{% url 'logout' %}" style="padding-left: 12px; padding-right: 12px;">
+                        <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Logout
+                    </a>
+                {% if user.is_superuser %}
+                    &nbsp;&nbsp;
+                    <a href="{% url 'admin:index' %}" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Admin Dashboard">
+                        <i class="fas fa-user"></i>
+                    </a>
+                {% endif %}
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-dark px-3 me-2 text-white">
+                        <i class="fas fa-sign-in-alt"></i>&nbsp;&nbsp;Login
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>

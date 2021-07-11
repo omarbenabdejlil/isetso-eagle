@@ -1,0 +1,89 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4 mb-4">
+    <div class="card text-center">
+        <div class="card-header">
+            <h1 style="text-align: left;">HOST DETAILS</h1>
+        </div>
+        <div class="card-body">
+            <center>
+                <table style="width: 100%; height: 50vh;">
+                    <tr>
+                        <td>
+                            <h5 class="card-title">HOST NAME : </h5>
+                        </td>
+                        <td>
+                            <h5 class="card-title text-muted">{{ item.hostName }}</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="card-title">HOST OS : </h5>
+                        </td>
+                        <td>
+                            <h5 class="card-title text-muted">{{ item.hostOs }}</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="card-title">IP : </h5>
+                        </td>
+                        <td>
+                            <h5 class="card-title text-muted">{{ item.ip }}</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="card-title">DISK : </h5>
+                        </td>
+                        <td>
+                            <h5 class="card-title text-muted">{{ item.disk }}%</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="card-title">RAM : </h5>
+                        </td>
+                        <td>
+                            <h5 class="card-title text-muted">{{ item.ram }} GB</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="card-title">CPU : </h5>
+                        </td>
+                        <td>
+                            <h5 class="card-title text-muted">{{ item.cpu }}%</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="card-title">INTERFACE : </h5>
+                        </td>
+                        <td>
+                            <h5 class="card-title text-muted">{{ item.interface }}</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="card-title">GRAPHIC : </h5>
+                        </td>
+                        <td>
+                            <h5 class="article-content text-muted" style="margin: 0; padding: 0; white-space: pre-line;" >
+                                {{ item.graphic }}
+                            </h5>
+                        </td>
+                    </tr>
+                </table>
+                {% if user.is_superuser %}
+                    <span class="del btn btn-danger mt-4" id="{{ item.pk }}" style="cursor: pointer !important;">Delete</span>
+                {% endif %}
+            </center>
+        </div>
+        <div class="card-footer text-muted">{{ item.date_posted }}</div>
+    </div>
+</div>
+
+{% endblock content %}

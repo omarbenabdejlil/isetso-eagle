@@ -1,0 +1,6 @@
+- copy:
+    src: /home/oba/Documents/semah_pfe
+    dest: /home/.
+    owner: oba
+    group: oba
+    mode: 0644

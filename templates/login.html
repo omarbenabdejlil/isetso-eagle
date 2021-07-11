@@ -1,0 +1,27 @@
+
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="card">
+    <h5 class="card-header text-center" style="background-color: #45637d; color: white;">Sign in</h5>
+    <div class="card-body">
+        <div class="modal-body">
+            <div class="text-center border border-light">
+              <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group" style="text-align: left;">
+                  {{ form|crispy }}
+                </fieldset>
+                <div class="form-group mt-4">
+                  <button class="btn btn-outline-info my-4" type="submit">Sign in</button>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

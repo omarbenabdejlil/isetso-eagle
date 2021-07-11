@@ -1,0 +1,83 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4 mb-4" style="min-height: 72vh;">
+    {% if user.is_authenticated %}
+        <div class="table-responsive">
+            <table class="table" style="text-align: center;">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">HOST NAME</th>
+                        <th scope="col">HOST OS</th>
+                        <th scope="col">IP</th>
+                        <th scope="col">DISK</th>
+                        <th scope="col">RAM</th>
+                        <th scope="col">CPU</th>
+                        <th scope="col">INTERFACE</th>
+                        <th scope="col">DETAILS</th>
+                        {% if user.is_superuser %}
+                        <th scope="col">DELETE</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if machineData %}
+                        {% for item in machineData %}
+                        <tr id="machineItem{{ item.pk }}">
+                            <th>
+                                <a href="{% url 'detailPage' id=item.id %}">
+                                    {{ item.hostName }}
+                                </a>
+                            </th>
+                            <th>{{ item.hostOs }}</th>
+                            <th>{{ item.ip }}</th>
+                            <th>
+                                {% if item.disk > 89  %}
+                                    <span style="color: red;">
+                                        {{ item.disk }}%
+                                    </span>
+                                {% else %}
+                                    {{ item.disk }}%
+                                {% endif %}
+                            </th>
+                            <th>{{ item.ram }} GB</th>
+                            <th>
+                                {% if item.cpu > 89  %}
+                                    <span style="color: red;">
+                                        {{ item.cpu }}%
+                                    </span>
+                                {% else %}
+                                    {{ item.cpu }}%
+                                {% endif %}
+                            </th>
+                            <th>{{ item.interface }}</th>
+                            <th>
+                                <a href="{% url 'detailPage' id=item.id %}">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                            </th>
+                            {% if user.is_superuser %}
+                            <th>
+                                <span class="del" id="{{ item.pk }}" style="cursor: pointer !important;">&#10007;</span>
+                            </th>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                            <div class="alert alert-danger" role="alert">
+                                No machine found in the server !
+                            </div>
+                        {% endif %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            You must Login to get access to the app ! 
+        </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

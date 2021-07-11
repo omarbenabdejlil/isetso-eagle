@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Project</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+
+    <style>
+      .del:hover {
+        color: red;
+      }
+
+      #id_username, #id_email {
+        margin-bottom: 25px;
+      }
+    </style>
+</head>
+<body>
+
+    {% include "navbar.html" %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% include "footer.html" %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+
+    <script>
+        // remove comment function with ajax
+        $(document).on('click', '.del', function () {
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              var pk = $(this).attr('id');
+              var item = "machineItem" + pk.toString()
+              $.ajax({
+                type: "POST",
+                url: "{% url 'deleteMachine' %}",
+                data: {'pk': pk},
+                dataType: "json",
+                success: function(response) {
+                  if (response.msg === 'Success') {
+                    document.getElementById(item).style.display = "none";
+                  }
+                }
+              });
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          })
+        })
+    </script>
+</body>
+</html>

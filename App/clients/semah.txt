@@ -1,0 +1,40 @@
+ 
+
+{ HOST details } 
+
+oba-omar
+Ubuntu 20.04.2 LTS
+
+
+{ Bloc DISK }
+
+Sys. de fichiers blocs de 1M Utilisé Disponible Uti% Monté sur
+/dev/sda6            345366M  78099M    249656M  24% /
+
+
+{ Bloc RAM }
+
+              total       utilisé      libre     partagé tamp/cache   disponible
+Mem:           7861        2688        1538          95        3634        4777
+Partition d'échange:        1951           0        1951
+Total:         9813        2688        3490
+
+
+{ Bloc CPU } 
+
+84.95
+
+
+{ Bloc Interfaces } 
+
+enp2s0
+wlp3s0
+
+{ adresse ip } 
+
+192.168.43.213
+
+{ Graphic Card } 
+
+       produit: HD Graphics 5500
+       produit: GK208BM [GeForce 920M]

@@ -1,0 +1,37 @@
+ 
+
+{ HOST details } 
+
+e3cb032afd48
+Ubuntu 20.04.2 LTS
+
+
+{ Bloc DISK }
+
+Sys. de fichiers blocs de 1M Utilisé Disponible Uti% Monté sur
+overlay          345366M 114403M   213352M  35% /
+
+
+{ Bloc RAM }
+
+              total        used        free      shared  buff/cache   available
+Mem:           7861        4472         301         171        3087        2934
+Swap:          1951          28        1923
+Total:         9813        4501        2225
+
+
+{ Bloc CPU } 
+
+
+
+
+{ Bloc Interfaces } 
+
+eth0@if99
+
+{ adresse ip } 
+
+172.17.0.2
+
+{ Graphic Card } 
+

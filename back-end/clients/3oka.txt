@@ -1,0 +1,49 @@
+ 
+
+{ HOST details } 
+
+sameh-lap
+Ubuntu 16.04.7 LTS
+
+
+{ Bloc DISK }
+
+Sys. de fichiers blocs de 1M Utilisé Disponible Uti% Monté sur
+/dev/sda1        231588M 8237M   211565M   4% /
+
+
+{ Bloc RAM }
+
+              total        used        free      shared  buff/cache   available
+Mem:           3019         466         978         179        1575        2035
+Swap:          3061           0        3061
+Total:         6081         466        4040
+
+
+{ Bloc CPU } 
+
+
+
+
+{ Bloc Interfaces } 
+
+eth0
+wlan0
+virbr0
+testinterface
+br-864a06c3cf6b
+docker0
+br-cb0e530009f7
+
+{ adresse ip } 
+
+169.254.5.152
+172.20.10.12
+192.168.122.1
+192.168.200.1
+172.18.0.1
+172.17.42.1
+10.0.50.254
+
+{ Graphic Card } 
+

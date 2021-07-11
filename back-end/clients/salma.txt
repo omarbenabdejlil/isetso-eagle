@@ -1,0 +1,39 @@
+ 
+
+{ HOST details } 
+
+salma-pc
+Ubuntu 20.04.2 LTS
+
+
+{ Bloc DISK }
+
+Sys. de fichiers blocs de 1M Utilisé Disponible Uti% Monté sur
+/dev/sda6            345366M  77730M    250025M  24% /
+
+
+{ Bloc RAM }
+
+              total       utilisé      libre     partagé tamp/cache   disponible
+Mem:           7861        3614         307         171        3939        3775
+Partition d'échange:        1951           0        1951
+Total:         9813        3614        2259
+
+
+{ Bloc CPU } 
+
+85.97
+
+
+{ Bloc Interfaces } 
+
+enp2s0
+
+{ adresse ip } 
+
+192.168.1.16
+
+{ Graphic Card } 
+
+       produit: HD Graphics 5500
+       produit: GK208BM [GeForce 920M]
