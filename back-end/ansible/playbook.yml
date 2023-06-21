@@ -1,4 +1,44 @@
 ---
+- name: Harden System
+  hosts: target_hosts
+  become: true
+  become_user: root
+
+  tasks:
+    - name: Install ClamAV anti-virus software
+      apt:
+        name: clamav
+        state: present
+      ignore_errors: true
+
+    - name: Check if rsyslog is already installed
+      stat:
+        path: /usr/sbin/rsyslogd
+      register: rsyslog_installed
+      ignore_errors: true
+
+    - name: Install rsyslog package
+      apt:
+        name: rsyslog
+        state: latest
+      when: not rsyslog_installed.stat.exists
+      ignore_errors: true
+
+    - name: Install iptables package
+      apt:
+        name: iptables
+        state: latest
+      when: not iptables_installed.stat.exists
+
+    - name: Create iptables rules directory
+      file:
+        path: /etc/iptables
+        state: directory
+
+    - name: Save iptables rules
+      shell: iptables-save > /etc/iptables/rules.v4
+      when: iptables_installed.stat.exists
+
 - name: Install CPU, RAM, and Disk Monitoring Tools
   hosts: target_servers
   become: true
