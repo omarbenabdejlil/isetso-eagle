@@ -1,6 +1,38 @@
-- copy:
-    src: /home/oba/Documents/semah_pfe
-    dest: /home/.
-    owner: oba
-    group: oba
-    mode: 0644
+---
+- name: Install CPU, RAM, and Disk Monitoring Tools
+  hosts: target_servers
+  become: true
+
+  tasks:
+    - name: Install sysstat package
+      apt:
+        name: sysstat
+        state: present
+
+    - name: Start sysstat service
+      service:
+        name: sysstat
+        state: started
+        enabled: yes
+
+    - name: Install htop package
+      apt:
+        name: htop
+        state: present
+
+    - name: Install iotop package
+      apt:
+        name: iotop
+        state: present
+
+    - name: Install bwm-ng package
+      apt:
+        name: bwm-ng
+        state: present
+
+    - name: Install ncdu package
+      apt:
+        name: ncdu
+        state: present
+
+    # Add additional tasks for other monitoring tools as needed
